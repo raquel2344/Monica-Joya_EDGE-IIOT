@@ -1,0 +1,23 @@
+A06 NARRATION SCRIPT — Paste one block per slide into Canva AI Voice
+======================================================================
+
+SLIDE 1 (Title):
+Hello, My name is Monica Joya. In this presentation I will cover IoT time-series forecasting lab for ITAI 3377. I used the Nixtla AutoML framework to build a complete forecasting pipeline on IoT temperature sensor data, including data preparation, model training, feature engineering, evaluation, and generative data augmentation.
+
+SLIDE 2 (Introduction):
+The dataset comes from Kaggle and contains over 97,000 temperature readings from an IoT sensor, collected between July and December 2018. After aggregating to daily averages, I had 134 daily observations to work with. The goal was to predict future temperature values using automated machine learning.
+
+SLIDE 3 (Data Preparation):
+I started by resampling the minute-level data into daily averages for a cleaner signal. This introduced 48 missing days, which I filled using time-based interpolation. I checked for outliers using the IQR rule and found none. The data was then split chronologically, with training data through November 12th and test data from November 13th to December 8th. Normalization was not needed for the forecasting models but was applied later for the VAE.
+
+SLIDE 4 (Model Selection):
+I chose Nixtla AutoMLForecast because it automates model selection and reduces manual tuning. Two model families were compared: linear regression and random forest. The search was guided by Optuna, minimizing MAE across three rolling-origin windows. The best model turned out to be linear regression, using lag features of 1, 7, and 14 days along with a rolling mean transform and a day-of-week feature.
+
+SLIDE 5 (Feature Engineering & Evaluation):
+Beyond the automated features from Nixtla, I added two custom features. First, a 7-day rolling mean that smooths out short-term sensor noise from things like warm-up spikes. Second, a day-of-week feature that captures weekly patterns from HVAC and occupancy schedules. On the test set, the baseline model achieved an MAE of 2.20, MSE of 8.32, and MASE of 2.20. Cross-validation confirmed consistent performance across multiple windows.
+
+SLIDE 6 (Generative Models):
+I built a Variational Autoencoder using TensorFlow to generate synthetic temperature data. The VAE was trained on 14-day sliding windows with a 2-dimensional latent space for 20 epochs. It produced 28 synthetic data points, which were added before the training history. After retraining with the augmented data, all three metrics improved. MAE dropped from 2.20 to 2.03, MSE from 8.32 to 7.01, and MASE from 2.20 to 2.12.
+
+SLIDE 7 (Key Insights):
+Four main takeaways from this project. First, keeping everything chronological prevented data leakage and kept the evaluation honest. Second, simple models like linear regression can be surprisingly effective when paired with good features. Third, IIoT domain features like rolling mean and day-of-week added real value because they are grounded in how sensors and buildings actually behave. And fourth, even a small amount of VAE-generated synthetic data improved all three metrics, showing promise for larger-scale augmentation in future work.
