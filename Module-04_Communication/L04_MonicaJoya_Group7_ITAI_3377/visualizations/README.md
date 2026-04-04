@@ -4,7 +4,7 @@ This folder contains visual outputs generated from the MQTT, CoAP, and OPC-UA pr
 
 ## Demo Video
 
-[▶ Watch the full simulation demo](visualization_demo.mp4)
+[▶ Watch the full simulation demo](visualization_demo_small.mp4)
 
 > Click the link above to view the recorded walkthrough of all three protocol simulations running live.
 
