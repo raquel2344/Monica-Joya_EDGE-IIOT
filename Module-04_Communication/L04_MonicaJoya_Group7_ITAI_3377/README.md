@@ -1,5 +1,6 @@
 Lab 04 Conceptual Design of an IIoT Sensor Network & Protocol Experimentation
 See website for this repo here: **https://raquel2344.github.io/Monica-Joya_EDGE-IIOT/#protocols**
+
 **Course:** ITAI 3377 – IoT & Edge Computing  
 **Date:** February 18, 2026
 
