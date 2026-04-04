@@ -4,9 +4,9 @@ This folder contains visual outputs generated from the MQTT, CoAP, and OPC-UA pr
 
 ## Demo Video
 
-[▶ Watch the full simulation demo](visualization_demo_small.mp4)
+[![ITAI 3377 - IIoT Protocol Simulation Demo](https://img.youtube.com/vi/Wr0DpVF_iWc/0.jpg)](https://youtu.be/Wr0DpVF_iWc)
 
-> Click the link above to view the recorded walkthrough of all three protocol simulations running live.
+> Click the thumbnail above to watch the full simulation demo on YouTube.
 
 ---
 
