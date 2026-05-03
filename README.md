@@ -13,7 +13,7 @@ The visual web version of this portfolio is hosted on GitHub Pages:
 
 **https://raquel2344.github.io/Monica-Joya_EDGE-IIOT/**
 
-The site is the easiest way to browse the course story end to end. The repository itself holds every artifact behind that story: source code, datasets, lab notebooks, deck PDFs, and module-by-module reflective writeups.
+The site is the easiest way to browse the course story end to end.
 
 ---
 
@@ -22,8 +22,8 @@ The site is the easiest way to browse the course story end to end. The repositor
 This repo is the full record of my work in ITAI 3377 across the Spring 2026 semester. It contains three categories of work:
 
 1. **Twelve module folders**, one per course module, each with its own README capturing what was taught, what I built, what I learned, and how the module connected to the rest of the course.
-2. **A midterm team project** on glucometer cybersecurity, completed with my IIoT group.
-3. **A capstone project** named SentinelEdge: an autonomous AI agent plus generative AI for industrial edge and IIoT, with its own runnable codebase and dedicated README inside the `Capstone/` folder.
+2. **A midterm team project** on glucometer cybersecurity, completed with my IIoT team.
+3. **A capstone project** named SentinelEdge: an autonomous AI agent plus generative AI for industrial edge and IIoT.
 
 The repository is intentionally organized so that anyone, including a professor, recruiter, or future classmate, can land on a single module folder and find a self-contained explanation without having to read the rest.
 
@@ -60,7 +60,6 @@ The `Midterm_TeamProject_Glucometer-Security/` folder holds the midterm group de
 | 11 | Standards, regulations, and compliance | `Module-11_Standards-Regulations` |
 | 12 | Agents at the edge | `Module-12_Agents-Edge` |
 
-Each module folder has its own README. The READMEs are narrative writeups, not bullet lists. They are meant to be readable on their own and to make sense to someone who was not in the class.
 
 ---
 
