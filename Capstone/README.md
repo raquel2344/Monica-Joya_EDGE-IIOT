@@ -41,18 +41,28 @@ Capstone/
 
 ## How to run (Mac M4 / Linux / Windows)
 
+The first step uses Git sparse checkout so you only download the `Capstone/` folder instead of the entire `Monica-Joya_EDGE-IIOT` course repository.
+
 ```bash
-# 1. Create and activate a virtual env
+# 1. Clone only the Capstone folder (sparse checkout)
+git clone --filter=blob:none --no-checkout https://github.com/raquel2344/Monica-Joya_EDGE-IIOT.git
+cd Monica-Joya_EDGE-IIOT
+git sparse-checkout init --cone
+git sparse-checkout set Capstone
+git checkout main
+cd Capstone
+
+# 2. Create and activate a virtual env
 python3 -m venv venv
 source venv/bin/activate          # (Windows: venv\Scripts\activate)
 
-# 2. Install dependencies
+# 3. Install dependencies
 pip install -r requirements.txt
 
-# 3. Option A — Run the headless simulation (writes CSV + JSONL logs)
+# 4. Option A — Run the headless simulation (writes CSV + JSONL logs)
 python src/sentinel_edge.py
 
-# 3. Option B — Launch the live Streamlit dashboard (used for the recorded demo)
+# 4. Option B — Launch the live Streamlit dashboard (used for the recorded demo)
 streamlit run src/dashboard.py
 ```
 
