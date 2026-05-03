@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lab 04 — Protocol Simulation · Monica Joya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:           #0f1419;
+      --surface:      #161c24;
+      --surface-2:    #1d2530;
+      --gold:         #c9a449;
+      --gold-soft:    #e3c878;
+      --gold-deep:    #8a6f2d;
+      --ink:          #e8e6e1;
+      --ink-soft:     #b8b5ad;
+      --ink-mute:     #7a776f;
+      --line:         rgba(201,164,73,0.18);
+      --line-strong:  rgba(201,164,73,0.35);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 300;
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 40% at 15% 0%, rgba(201,164,73,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 85% 100%, rgba(201,164,73,0.05) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 3rem 2rem 2rem;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 2.5rem;
+    }
+
+    .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--gold-soft);
+    }
+
+    .brand-mark {
+      color: var(--gold);
+      margin-right: 0.4rem;
+    }
+
+    .brand a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .header-meta {
+      font-size: 0.78rem;
+      color: var(--ink-mute);
+      letter-spacing: 0.05em;
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      font-size: 0.78rem;
+      color: var(--ink-mute);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    .breadcrumb a {
+      color: var(--gold-soft);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+
+    .breadcrumb a:hover { color: var(--gold); }
+
+    .breadcrumb-sep {
+      color: var(--ink-mute);
+      margin: 0 0.5rem;
+    }
+
+    /* HERO */
+    .hero {
+      margin-bottom: 2.5rem;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--gold-soft);
+      font-weight: 500;
+    }
+
+    .lead {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      max-width: 640px;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--gold-soft);
+      background: var(--surface);
+      text-transform: uppercase;
+    }
+
+    /* SECTION */
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--gold-soft);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--line);
+      letter-spacing: 0.01em;
+    }
+
+    /* VIDEO */
+    .video-wrapper {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: block;
+      border: none;
+    }
+
+    .video-caption {
+      padding: 0.8rem 1.1rem;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .video-caption .left { color: var(--gold-soft); }
+    .video-caption .right { color: var(--ink-mute); }
+
+    /* SCREENSHOTS */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+    }
+
+    @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    .shot {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      transition: border-color 0.18s, transform 0.18s;
+    }
+
+    .shot:hover {
+      border-color: var(--line-strong);
+      transform: translateY(-1px);
+    }
+
+    .shot img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .shot-label {
+      padding: 0.7rem 1rem;
+      font-size: 0.78rem;
+      color: var(--gold-soft);
+      letter-spacing: 0.04em;
+      border-top: 1px solid var(--line);
+    }
+
+    /* PROTOCOLS */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+    }
+
+    @media (max-width: 720px) { .grid-3 { grid-template-columns: 1fr; } }
+
+    .protocol {
+      padding: 1.2rem 1.3rem;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      transition: border-color 0.18s, background 0.18s;
+    }
+
+    .protocol:hover {
+      border-color: var(--line-strong);
+      background: var(--surface-2);
+    }
+
+    .protocol-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .protocol-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .protocol-desc {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--line);
+      padding-top: 1.5rem;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      font-size: 0.78rem;
+      color: var(--ink-mute);
+    }
+
+    footer a {
+      color: var(--gold-soft);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+
+    footer a:hover { color: var(--gold); }
+
+    .gh-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      transition: border-color 0.18s, background 0.18s;
+    }
+
+    .gh-link:hover {
+      border-color: var(--gold);
+      background: var(--surface);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="brand"><a href="index.html"><span class="brand-mark">◆</span> Monica Joya</a></div>
+      <div class="header-meta">ITAI 3377 · Spring 2026</div>
+    </header>
+
+    <div class="breadcrumb">
+      <a href="index.html">Portfolio</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="Module-04_Communication/" target="_blank" rel="noopener">Module 04</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>Lab 04 Demo</span>
+    </div>
+
+    <div class="hero">
+      <div class="eyebrow">Lab 04 · Group 7</div>
+      <h1>IIoT Protocol <em>Simulation</em></h1>
+      <p class="lead">A hands-on exploration of MQTT, CoAP, and OPC-UA industrial communication protocols running on simulated edge devices. Below is the live demo, the output visualizations, and a brief on each protocol.</p>
+      <div class="tag-row">
+        <span class="tag">MQTT</span>
+        <span class="tag">CoAP</span>
+        <span class="tag">OPC-UA</span>
+        <span class="tag">Python</span>
+        <span class="tag">Edge AI</span>
+      </div>
+    </div>
+
+    <section>
+      <h2>Live Demo</h2>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/Wr0DpVF_iWc"
+          title="ITAI 3377 - IIoT Protocol Simulation Demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+        <div class="video-caption">
+          <span class="left">ITAI 3377 — Lab 04 Protocol Simulation</span>
+          <span class="right">Monica Joya · Group 7 · Apr 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Output Visualizations</h2>
+      <div class="grid-2">
+        <div class="shot">
+          <img src="Module-04_Communication/L04_MonicaJoya_Group7_ITAI_3377/visualizations/mqtt_visualization.png" alt="MQTT Visualization"/>
+          <div class="shot-label">MQTT — Message Queue Telemetry Transport</div>
+        </div>
+        <div class="shot">
+          <img src="Module-04_Communication/L04_MonicaJoya_Group7_ITAI_3377/visualizations/coap_visualization.png" alt="CoAP Visualization"/>
+          <div class="shot-label">CoAP — Constrained Application Protocol</div>
+        </div>
+        <div class="shot">
+          <img src="Module-04_Communication/L04_MonicaJoya_Group7_ITAI_3377/visualizations/coap_visualization_NoServerError.png" alt="CoAP No Server Error"/>
+          <div class="shot-label">CoAP — No Server Error Handling</div>
+        </div>
+        <div class="shot">
+          <img src="Module-04_Communication/L04_MonicaJoya_Group7_ITAI_3377/visualizations/opcua_visualization.png" alt="OPC-UA Visualization"/>
+          <div class="shot-label">OPC-UA — Open Platform Communications</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>About the Protocols</h2>
+      <div class="grid-3">
+        <div class="protocol">
+          <div class="protocol-tag">Pub-Sub</div>
+          <div class="protocol-name">MQTT</div>
+          <p class="protocol-desc">Lightweight publish-subscribe protocol designed for constrained devices and low-bandwidth, high-latency networks. Ideal for IoT sensor telemetry.</p>
+        </div>
+        <div class="protocol">
+          <div class="protocol-tag">RESTful</div>
+          <div class="protocol-name">CoAP</div>
+          <p class="protocol-desc">Specialized web transfer protocol for use with constrained nodes and networks in IoT environments. RESTful design optimized for machine-to-machine communication.</p>
+        </div>
+        <div class="protocol">
+          <div class="protocol-tag">Industrial</div>
+          <div class="protocol-name">OPC-UA</div>
+          <p class="protocol-desc">Platform-independent service-oriented architecture for industrial automation. Provides secure, reliable data exchange between industrial devices and enterprise systems.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>Houston City College · BAT in AI & Robotics · 2026</div>
+      <a class="gh-link" href="https://github.com/raquel2344/Monica-Joya_EDGE-IIOT" target="_blank" rel="noopener">
+        View on GitHub <span style="font-size: 0.7em;">↗</span>
+      </a>
+    </footer>
+
+  </div>
+</body>
+</html>
