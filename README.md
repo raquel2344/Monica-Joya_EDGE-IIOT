@@ -2,7 +2,7 @@
 
 **Course:** ITAI 3377 - IoT & Edge Computing  
 **Term:** Spring 2026  
-**Student:** Monica Joya (Raquel)  
+**Student:** Monica (Raquel) Joya 
 **School:** Houston City College, BAT in AI & Robotics  
 
 ---
