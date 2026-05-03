@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" font-family="Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937"/>
+    </marker>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bgGrad)"/>
+
+  <text x="600" y="36" text-anchor="middle" fill="#f1f5f9" font-size="22" font-weight="700">
+    SentinelEdge — Production-Ready Autonomous Industrial IoT Architecture
+  </text>
+  <text x="600" y="58" text-anchor="middle" fill="#94a3b8" font-size="13">
+    Capstone Project · ITAI 3377 · Monica Joya · Spring 2026
+  </text>
+  <text x="600" y="78" text-anchor="middle" fill="#cbd5e1" font-size="11" font-style="italic">
+    Solid lines · components implemented in this demo      |      Dashed labels · production roadmap
+  </text>
+
+  <!-- Layer labels (left side) -->
+  <text x="20" y="135" fill="#64748b" font-size="11" font-weight="700">DEVICE LAYER</text>
+  <text x="20" y="275" fill="#64748b" font-size="11" font-weight="700">EDGE GATEWAY</text>
+  <text x="20" y="440" fill="#64748b" font-size="11" font-weight="700">AI CORE</text>
+  <text x="20" y="618" fill="#64748b" font-size="11" font-weight="700">ACTION</text>
+  <text x="20" y="634" fill="#64748b" font-size="11" font-weight="700">+ UI</text>
+
+  <!-- Device layer: pump + sensors -->
+  <g>
+    <rect x="120" y="110" width="160" height="80" rx="8" fill="#0ea5e9" stroke="#0369a1" stroke-width="2"/>
+    <text x="200" y="140" text-anchor="middle" fill="white" font-size="14" font-weight="700">Industrial Pump</text>
+    <text x="200" y="160" text-anchor="middle" fill="#e0f2fe" font-size="11">PUMP-A1-Houston</text>
+    <text x="200" y="177" text-anchor="middle" fill="#e0f2fe" font-size="11">(simulated)</text>
+  </g>
+
+  <g>
+    <rect x="320" y="105" width="120" height="40" rx="6" fill="#1e293b" stroke="#475569"/>
+    <text x="380" y="130" text-anchor="middle" fill="#e2e8f0" font-size="12">Vibration sensor</text>
+    <rect x="320" y="153" width="120" height="40" rx="6" fill="#1e293b" stroke="#475569"/>
+    <text x="380" y="178" text-anchor="middle" fill="#e2e8f0" font-size="12">Temperature</text>
+    <rect x="320" y="201" width="120" height="40" rx="6" fill="#1e293b" stroke="#475569"/>
+    <text x="380" y="226" text-anchor="middle" fill="#e2e8f0" font-size="12">Pressure + RPM</text>
+  </g>
+
+  <!-- Connection device -> edge -->
+  <line x1="280" y1="150" x2="320" y2="125" stroke="#64748b" stroke-width="2"/>
+  <line x1="280" y1="150" x2="320" y2="173" stroke="#64748b" stroke-width="2"/>
+  <line x1="280" y1="150" x2="320" y2="221" stroke="#64748b" stroke-width="2"/>
+
+  <!-- Security badge on the wire with transport label -->
+  <g>
+    <!-- Transport protocol label above the security pill -->
+    <text x="575" y="135" text-anchor="middle" fill="#67e8f9" font-size="11" font-weight="700">
+      Transport: MQTT / HTTPS
+    </text>
+    <text x="575" y="148" text-anchor="middle" fill="#94a3b8" font-size="9" font-style="italic">
+      in-memory call in demo
+    </text>
+
+    <rect x="490" y="155" width="170" height="40" rx="20" fill="#7c2d12" stroke="#fb923c" stroke-width="2"/>
+    <text x="575" y="180" text-anchor="middle" fill="#fed7aa" font-size="12" font-weight="700">
+      Security boundary
+    </text>
+    <!-- Status annotations under the pill -->
+    <text x="575" y="212" text-anchor="middle" fill="#fed7aa" font-size="10" font-weight="700">
+      HMAC-SHA256
+    </text>
+    <text x="575" y="224" text-anchor="middle" fill="#86efac" font-size="9" font-style="italic">
+      ✓ implemented
+    </text>
+    <text x="575" y="240" text-anchor="middle" fill="#cbd5e1" font-size="10">
+      + AES-GCM channel encryption
+    </text>
+    <text x="575" y="252" text-anchor="middle" fill="#94a3b8" font-size="9" font-style="italic">
+      planned for production
+    </text>
+  </g>
+  <line x1="440" y1="175" x2="490" y2="175" stroke="#fb923c" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="660" y1="175" x2="710" y2="175" stroke="#fb923c" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Edge gateway box -->
+  <g>
+    <rect x="710" y="105" width="280" height="180" rx="10" fill="#1e3a8a" stroke="#3b82f6" stroke-width="2"/>
+    <text x="850" y="135" text-anchor="middle" fill="white" font-size="15" font-weight="700">Edge Gateway</text>
+    <text x="850" y="155" text-anchor="middle" fill="#bfdbfe" font-size="11">Mac M4 / Jetson Orin Nano</text>
+
+    <rect x="730" y="170" width="240" height="32" rx="5" fill="#1e40af" stroke="#60a5fa"/>
+    <text x="850" y="190" text-anchor="middle" fill="white" font-size="12">1. Verify HMAC signature</text>
+
+    <rect x="730" y="210" width="240" height="32" rx="5" fill="#1e40af" stroke="#60a5fa"/>
+    <text x="850" y="230" text-anchor="middle" fill="white" font-size="12">2. Normalize + rolling window</text>
+
+    <rect x="730" y="250" width="240" height="32" rx="5" fill="#1e40af" stroke="#60a5fa"/>
+    <text x="850" y="270" text-anchor="middle" fill="white" font-size="12">3. Forward to AI core</text>
+  </g>
+
+  <!-- AI Core layer (3 boxes side by side) -->
+  <g>
+    <rect x="80" y="330" width="320" height="180" rx="10" fill="#065f46" stroke="#10b981" stroke-width="2"/>
+    <text x="240" y="360" text-anchor="middle" fill="white" font-size="14" font-weight="700">Anomaly + Forecast Models</text>
+    <line x1="100" y1="372" x2="380" y2="372" stroke="#34d399" stroke-width="1"/>
+    <text x="240" y="395" text-anchor="middle" fill="#a7f3d0" font-size="12">Isolation Forest (n=80)</text>
+    <text x="240" y="415" text-anchor="middle" fill="#a7f3d0" font-size="12">→ flags out-of-distribution data</text>
+    <text x="240" y="440" text-anchor="middle" fill="#a7f3d0" font-size="12">Linear Regression forecaster</text>
+    <text x="240" y="458" text-anchor="middle" fill="#a7f3d0" font-size="12">→ predicts vibration 5 ticks ahead</text>
+    <text x="240" y="485" text-anchor="middle" fill="#86efac" font-size="11" font-style="italic">Online refit every 10 ticks</text>
+  </g>
+
+  <g>
+    <rect x="440" y="330" width="320" height="180" rx="10" fill="#581c87" stroke="#a855f7" stroke-width="2"/>
+    <text x="600" y="360" text-anchor="middle" fill="white" font-size="14" font-weight="700">Generative AI Layer</text>
+    <line x1="460" y1="372" x2="740" y2="372" stroke="#c084fc" stroke-width="1"/>
+    <text x="600" y="395" text-anchor="middle" fill="#e9d5ff" font-size="12">Synthetic fault data generator</text>
+    <text x="600" y="415" text-anchor="middle" fill="#e9d5ff" font-size="12">→ balances rare fault classes at training</text>
+    <text x="600" y="440" text-anchor="middle" fill="#e9d5ff" font-size="12">LLM report writer (Groq llama-3.3-70b)</text>
+    <text x="600" y="458" text-anchor="middle" fill="#e9d5ff" font-size="12">→ plain-English maintenance reports</text>
+    <text x="600" y="485" text-anchor="middle" fill="#d8b4fe" font-size="11" font-style="italic">Offline templated fallback active in this demo</text>
+  </g>
+
+  <g>
+    <rect x="800" y="330" width="320" height="180" rx="10" fill="#7f1d1d" stroke="#ef4444" stroke-width="2"/>
+    <text x="960" y="360" text-anchor="middle" fill="white" font-size="14" font-weight="700">Autonomous Decision Agent</text>
+    <line x1="820" y1="372" x2="1100" y2="372" stroke="#fca5a5" stroke-width="1"/>
+    <text x="960" y="395" text-anchor="middle" fill="#fecaca" font-size="12">Hybrid policy: ISO 10816 hard rules</text>
+    <text x="960" y="415" text-anchor="middle" fill="#fecaca" font-size="12">+ ML signals (anomaly, forecast)</text>
+    <text x="960" y="442" text-anchor="middle" fill="#fecaca" font-size="12">CONTINUE · FLAG · REDUCE_LOAD</text>
+    <text x="960" y="462" text-anchor="middle" fill="#fecaca" font-size="12">SCHEDULE_MAINT · SHUTDOWN</text>
+    <text x="960" y="488" text-anchor="middle" fill="#fda4af" font-size="11" font-style="italic">Every decision logged + explainable</text>
+  </g>
+
+  <!-- Wires from gateway to AI core -->
+  <line x1="800" y1="285" x2="240" y2="330" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <line x1="850" y1="285" x2="600" y2="330" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <line x1="900" y1="285" x2="960" y2="330" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+
+  <!-- Action layer -->
+  <g>
+    <rect x="80" y="570" width="240" height="100" rx="10" fill="#0f172a" stroke="#475569" stroke-width="2"/>
+    <text x="200" y="600" text-anchor="middle" fill="white" font-size="14" font-weight="700">Streamlit Dashboard</text>
+    <text x="200" y="622" text-anchor="middle" fill="#cbd5e1" font-size="11">Live charts, decision log,</text>
+    <text x="200" y="638" text-anchor="middle" fill="#cbd5e1" font-size="11">generative report panel</text>
+  </g>
+
+  <g>
+    <rect x="350" y="570" width="240" height="100" rx="10" fill="#0f172a" stroke="#475569" stroke-width="2"/>
+    <text x="470" y="600" text-anchor="middle" fill="white" font-size="14" font-weight="700">PLC / Actuator</text>
+    <text x="470" y="622" text-anchor="middle" fill="#cbd5e1" font-size="11">Reduce load, isolate pump,</text>
+    <text x="470" y="638" text-anchor="middle" fill="#cbd5e1" font-size="11">trigger CMMS work order</text>
+    <text x="470" y="656" text-anchor="middle" fill="#94a3b8" font-size="10" font-style="italic">simulated in demo</text>
+  </g>
+
+  <g>
+    <rect x="620" y="570" width="240" height="100" rx="10" fill="#0f172a" stroke="#475569" stroke-width="2"/>
+    <text x="740" y="600" text-anchor="middle" fill="white" font-size="14" font-weight="700">Audit + Logs</text>
+    <text x="740" y="622" text-anchor="middle" fill="#cbd5e1" font-size="11">CSV telemetry, JSONL</text>
+    <text x="740" y="638" text-anchor="middle" fill="#cbd5e1" font-size="11">decisions, signature trail</text>
+  </g>
+
+  <g>
+    <rect x="890" y="570" width="240" height="100" rx="10" fill="#0f172a" stroke="#475569" stroke-width="2"/>
+    <text x="1010" y="600" text-anchor="middle" fill="white" font-size="14" font-weight="700">Operator Alerts</text>
+    <text x="1010" y="622" text-anchor="middle" fill="#cbd5e1" font-size="11">Email / Slack / SMS for</text>
+    <text x="1010" y="638" text-anchor="middle" fill="#cbd5e1" font-size="11">CRITICAL severity only</text>
+    <text x="1010" y="656" text-anchor="middle" fill="#94a3b8" font-size="10" font-style="italic">production integration</text>
+  </g>
+
+  <!-- Action wires with protocol labels (positioned to the left of each line) -->
+  <text x="190" y="543" text-anchor="end" fill="#94a3b8" font-size="9" font-style="italic">WebSocket</text>
+  <text x="460" y="543" text-anchor="end" fill="#94a3b8" font-size="9" font-style="italic">Modbus / OPC UA</text>
+  <text x="730" y="543" text-anchor="end" fill="#94a3b8" font-size="9" font-style="italic">file I/O</text>
+  <text x="1000" y="543" text-anchor="end" fill="#94a3b8" font-size="9" font-style="italic">HTTPS / SMTP</text>
+  <line x1="200" y1="510" x2="200" y2="570" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="470" y1="510" x2="470" y2="570" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="740" y1="510" x2="740" y2="570" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1010" y1="510" x2="1010" y2="570" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+
+</svg>

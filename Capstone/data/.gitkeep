@@ -1,0 +1,2 @@
+# Sample telemetry data is regenerated when you run `python src/sentinel_edge.py`.
+# This .gitkeep keeps the folder under version control.

@@ -1,2 +1,10 @@
 edge_ai_env/
 .venv/
+
+# Python virtual environments
+venv/
+*/venv/
+**/venv/
+.DS_Store
+**/.DS_Store
+*.mp4

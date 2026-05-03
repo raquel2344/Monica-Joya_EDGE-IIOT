@@ -1,0 +1,48 @@
+{
+  "host": "user-machine",
+  "n_ticks": 200,
+  "training_time_ms": {
+    "isolation_forest_fit": 37.692,
+    "linear_regression_fit": 4.567
+  },
+  "stage_latency_ms": [
+    {
+      "stage": "Security (sign + verify)",
+      "p50_ms": 0.013,
+      "p95_ms": 0.015,
+      "p99_ms": 0.019,
+      "mean_ms": 0.013
+    },
+    {
+      "stage": "AI inference (anomaly + forecast)",
+      "p50_ms": 3.537,
+      "p95_ms": 3.734,
+      "p99_ms": 3.784,
+      "mean_ms": 3.523
+    },
+    {
+      "stage": "Decision (agent policy)",
+      "p50_ms": 0.011,
+      "p95_ms": 0.012,
+      "p99_ms": 0.013,
+      "mean_ms": 0.011
+    },
+    {
+      "stage": "Generative report (template)",
+      "p50_ms": 0.001,
+      "p95_ms": 0.002,
+      "p99_ms": 0.003,
+      "mean_ms": 0.001
+    },
+    {
+      "stage": "Full per-tick pipeline",
+      "p50_ms": 3.577,
+      "p95_ms": 3.778,
+      "p99_ms": 3.831,
+      "mean_ms": 3.564
+    }
+  ],
+  "dashboard_tick_interval_ms": 250,
+  "headroom_ms": 246.222,
+  "headroom_pct": 98.5
+}
