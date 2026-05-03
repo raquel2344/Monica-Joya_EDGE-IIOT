@@ -7,17 +7,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg:           #0f1419;
-      --surface:      #161c24;
-      --surface-2:    #1d2530;
-      --gold:         #c9a449;
-      --gold-soft:    #e3c878;
-      --gold-deep:    #8a6f2d;
-      --ink:          #e8e6e1;
-      --ink-soft:     #b8b5ad;
-      --ink-mute:     #7a776f;
-      --line:         rgba(201,164,73,0.18);
-      --line-strong:  rgba(201,164,73,0.35);
+      --bg:           #0a1628;
+      --surface:      #102341;
+      --surface-2:    #163056;
+      --gold:         #d4af37;
+      --gold-soft:    #ecc870;
+      --gold-deep:    #9c7e22;
+      --ink:          #f0ede4;
+      --ink-soft:     #b8b8b0;
+      --ink-mute:     #7a7d80;
+      --line:         rgba(212,175,55,0.20);
+      --line-strong:  rgba(212,175,55,0.40);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,8 +38,8 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 50% 40% at 15% 0%, rgba(201,164,73,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 50% at 85% 100%, rgba(201,164,73,0.05) 0%, transparent 60%);
+        radial-gradient(ellipse 50% 40% at 15% 0%, rgba(212,175,55,0.09) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 85% 100%, rgba(212,175,55,0.06) 0%, transparent 60%);
       pointer-events: none;
       z-index: 0;
     }
@@ -52,7 +52,6 @@
       padding: 3rem 2rem 2rem;
     }
 
-    /* HEADER */
     header {
       display: flex;
       justify-content: space-between;
@@ -86,7 +85,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* BREADCRUMB */
     .breadcrumb {
       font-size: 0.78rem;
       color: var(--ink-mute);
@@ -107,7 +105,6 @@
       margin: 0 0.5rem;
     }
 
-    /* HERO */
     .hero {
       margin-bottom: 2.5rem;
     }
@@ -162,7 +159,6 @@
       text-transform: uppercase;
     }
 
-    /* SECTION */
     section {
       margin-bottom: 3rem;
     }
@@ -178,7 +174,6 @@
       letter-spacing: 0.01em;
     }
 
-    /* VIDEO */
     .video-wrapper {
       border-radius: 6px;
       overflow: hidden;
@@ -209,7 +204,6 @@
     .video-caption .left { color: var(--gold-soft); }
     .video-caption .right { color: var(--ink-mute); }
 
-    /* SCREENSHOTS */
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -245,7 +239,6 @@
       border-top: 1px solid var(--line);
     }
 
-    /* PROTOCOLS */
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -290,7 +283,6 @@
       line-height: 1.55;
     }
 
-    /* FOOTER */
     footer {
       border-top: 1px solid var(--line);
       padding-top: 1.5rem;
